@@ -11,6 +11,8 @@ app.get('/', (req, res) => {
 	res.status(200).json({ message: 'Welcome to movies api ' });
 });
 
+app.use('/movies', require('./routes/movies'));
+
 
 if (db) {
 	app.listen(PORT, () => {
