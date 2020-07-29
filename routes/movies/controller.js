@@ -37,19 +37,18 @@ module.exports = {
     },
 
 
-    //     findByID: async (req, res) => {
-    //         try {
-    //     const { id } = req.params;
-
-    //     const resultByID = await Task.findById(id)
-    //     res.status(200).json({
-    //         message: `Get assignment By taskID: ${id}`,
-    //         data: resultByID,
-    //     });
-    // } catch (error) {
-    //     console.log(error)
-    // }
-    // },
+    getMovieById: async (req, res) => {
+		try {
+			const { id } = req.params;
+			const movie = await Movies.findById(id);
+			res.status(200).json({
+                message: `Get movie by ID ${id} success`,
+                data: movie,
+            });
+		} catch (error) {
+			console.log(error);
+		}
+	},
 
     edit: async (req, res) => {
         try {
