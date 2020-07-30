@@ -48,6 +48,19 @@ module.exports = {
 		} catch (error) {
 			console.log(error);
 		}
+    },
+    
+    getMovieByTitle: async (req, res) => {
+		try {
+			const  title  = req.query.title;
+			const movie = await Movies.find(title);
+			res.status(200).json({
+                message: `Get movie by title ${title} success`,
+                data: movie,
+            });
+		} catch (error) {
+			console.log(error);
+		}
 	},
 
     edit: async (req, res) => {

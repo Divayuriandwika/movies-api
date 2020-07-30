@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/movies', require('./routes/movies'));
+app.use('/users', require('./routes/users'));
 
 
 if (db) {
