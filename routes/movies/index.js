@@ -6,8 +6,9 @@ const { getAll, create,  getMovieByTitle, getMovieById, edit, deleteMovie } = re
 router.get('/', getAll);
 router.post('/', create);
 router.get('/:id', getMovieById);
-router.get('/judul/:title', getMovieByTitle);
+router.get('/title/:title', getMovieByTitle);
 router.put('/:id', edit);
 router.delete('/:id', deleteMovie);
+
 
 module.exports = router;

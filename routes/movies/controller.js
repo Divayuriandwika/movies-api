@@ -7,10 +7,11 @@ module.exports = {
 		try {
 			const movies = await Movies.find({});
 
-			res.status(200).json({ message: 'Get All Movies', data: movies });
+            res.status(200).json({ message: 'Get All Movies', data: movies });
 		} catch (error) {
 			console.log(error);
-		}
+        }
+        
     },
 
 
@@ -39,8 +40,10 @@ module.exports = {
 
     getMovieById: async (req, res) => {
 		try {
-			const { id } = req.params;
-			const movie = await Movies.findById(id);
+            const { id } = req.params;
+            
+            const movie = await Movies.findById(id);
+            
 			res.status(200).json({
                 message: `Get movie by ID ${id} success`,
                 data: movie,
@@ -52,12 +55,16 @@ module.exports = {
     
     getMovieByTitle: async (req, res) => {
 		try {
-			const  title  = req.query.title;
-			const movie = await Movies.find(title);
+            console.log(req.params);
+            
+			const  {title}  = req.params;
+            const movie = await Movies.find({title: title});
+            
 			res.status(200).json({
                 message: `Get movie by title ${title} success`,
                 data: movie,
             });
+
 		} catch (error) {
 			console.log(error);
 		}
