@@ -57,8 +57,9 @@ module.exports = {
 		try {
             console.log(req.params);
             
-			const  {title}  = req.params;
-            const movie = await Movies.find({title: title});
+            const  {title}  = req.params;
+
+            const movie = await Movies.find({title : title})
             
 			res.status(200).json({
                 message: `Get movie by title ${title} success`,
