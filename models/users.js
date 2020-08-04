@@ -17,6 +17,14 @@ const userSchema = new Schema({
 		type: String,
 		default: 'user'
 	},
+	googleid: {
+		type: String,
+		required: false
+	},
+	facebookid: {
+		type: String,
+		required: false
+	},
 });
 
 const User = mongoose.model('users', userSchema);

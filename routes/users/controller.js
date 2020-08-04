@@ -69,5 +69,21 @@ module.exports = {
         } catch (error) {
             console.log(error);
         }
+    },
+
+    googleLogin: async (req, res) => {
+        try {
+            const { googleid } = req.body;
+            console.log(req.body)
+
+            const users = await User.findOne({ googleid });
+
+            // guard clause
+            if(!users) return res.status(401).send("Your email is not registered")
+            res.status(200).send({ message: 'Login success', id: users.id, role: users.role});
+
+        } catch (error) {
+            console.log(error);
+        }
     }
     }
