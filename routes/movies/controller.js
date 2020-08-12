@@ -55,12 +55,14 @@ module.exports = {
     },
     
     getMovieByTitle: async (req, res) => {
-		try {
+        try {
             console.log(req.params);
             
             const  {title}  = req.params;
 
-            const movie = await Movies.find({title : title})
+            const regex=  new RegExp(`${title.toLowerCase()}`,"i")
+
+            const movie = await Movies.find({"title" : {"$regex" : regex}})
             
 			res.status(200).json({
                 message: `Get movie by title ${title} success`,
@@ -70,7 +72,7 @@ module.exports = {
 		} catch (error) {
 			console.log(error);
 		}
-	},
+    },
 
     edit: async (req, res) => {
         try {
