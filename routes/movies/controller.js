@@ -17,7 +17,7 @@ module.exports = {
 
     create: async (req, res) => {
         try {
-            const { title, poster, resume, rating, genre, year } = req.body;
+            const { title, poster, resume, rating, genre, year, trailer } = req.body;
 
             const movies = await Movies.create({
                 title, 
@@ -25,7 +25,8 @@ module.exports = {
                 resume, 
                 rating, 
                 genre, 
-                year
+                year,
+                trailer
             });
 
             res.status(201).json({
@@ -74,14 +75,15 @@ module.exports = {
     edit: async (req, res) => {
         try {
             const { id } = req.params;
-            const { title, poster, resume, rating, genre, year } = req.body;
+            const { title, poster, resume, rating, genre, year, trailer } = req.body;
             const edited = {
                 title, 
                 poster, 
                 resume, 
                 rating, 
                 genre, 
-                year
+                year,
+                trailer
             };
 
             const editMovie = await Movies.findByIdAndUpdate(id, {

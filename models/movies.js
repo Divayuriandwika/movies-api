@@ -24,7 +24,11 @@ const moviesSchema = new Schema({
     year: {
         type: Number,
         required: true
-    }
+	},
+	trailer: {
+		type: String,
+		required: true
+	},
 });
 
 const Movies = mongoose.model('movies', moviesSchema);
